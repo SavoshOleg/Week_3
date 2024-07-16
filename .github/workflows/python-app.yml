@@ -3,10 +3,10 @@ name: Python application
 on:
   push:
     branches:
-      - main  # Змініть на назву вашої основної гілки
+      - main 
   pull_request:
     branches:
-      - main  # Змініть на назву вашої основної гілки
+      - main 
 
 jobs:
   build:
