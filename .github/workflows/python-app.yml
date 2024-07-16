@@ -1,19 +1,26 @@
 name: Python application
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main  # Змініть на назву вашої основної гілки
+  pull_request:
+    branches:
+      - main  # Змініть на назву вашої основної гілки
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository content
+    - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Set up Python 3.12.4
+      uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: 3.12.4
 
     - name: Install dependencies
       run: |
@@ -22,4 +29,4 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest discover -s tests
+        python -m unittest discover tests
