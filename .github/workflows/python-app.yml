@@ -1,0 +1,28 @@
+name: Python application
+
+# Запускати workflow при push або pull request до основної гілки
+on: [push, pull_request]
+
+jobs:
+  build:
+    # Операційна система для запуску workflow
+    runs-on: ubuntu-latest
+
+    steps:
+    # Кроки, які будуть виконуватися у workflow
+    - name: Checkout repository content
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run: |
+        python -m unittest discover tests
